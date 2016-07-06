@@ -1,0 +1,15 @@
+/* style.css */
+/* main styles ------------------------------------------*/
+body        {
+    background:white;
+}
+
+.warnings_button{
+    background-color: white;
+    color : rgba(0,0,0,0.87) !important;
+}
+
+.warnings_button:hover{
+    background-color: white;
+    color : rgba(0,0,0,0.87) !important;
+}

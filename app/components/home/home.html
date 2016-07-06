@@ -1,0 +1,135 @@
+<div layout="column" flex>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2>
+              <span>Splendiz dashboard</span>
+            </h2>
+            <span flex></span>
+            <md-button class="warnings_button" ng-click="home.warningsEnabled = ! home.warningsEnabled">
+                <span ng-if="home.warningsEnabled">Disable warnings</span>
+                <span ng-if="!home.warningsEnabled">Enable warnings</span>
+            </md-button>
+          </div>
+        </md-toolbar>
+        <md-content flex>
+
+
+
+            <div layout="row" flex>
+
+                <!-- EAT IN -->
+                <div flex>
+                    <md-toolbar md-scroll-shrink>
+                        <div class="md-toolbar-tools">Eat in</div>
+                    </md-toolbar>
+                    <md-card ng-repeat="order in home.orders" ng-if="order.option == 'Eat in'">
+                      <md-subheader class="md-no-sticky">{{order.option}}</em> - {{order.time | ordertime}}</md-subheader>
+                      <md-card-content>
+                        <md-list>
+                            <md-list-item ng-repeat="item in order.items" ng-if="$index > 0">
+                                <p>{{item.quantity}} {{item.size}} {{item.name}}</p>
+                                <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+                            </md-list-item>
+
+                            <md-list-item ng-if="order.option == 'Delivery'">
+                                <p><em>Name</em> : {{order.client_name}}</p>
+                                <p><em>Address</em> : {{order.delivery_address}}</p>
+                                <p><em>Phone number</em> : {{order.phone_number}}</p>
+                            </md-list-item>
+                        <md-list>
+                      </md-card-content>
+                      <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="home.showConfirm($event,order.$id)">Done</md-button>
+                      </md-card-actions>
+                    </md-card>
+                </div>
+
+                <!-- TAKE OUT -->
+                <div flex>
+                    <md-toolbar md-scroll-shrink>
+                        <div class="md-toolbar-tools">Take out</div>
+                    </md-toolbar>
+                    <md-card ng-repeat="order in home.orders" ng-if="order.option == 'Take out'">
+                      <md-subheader class="md-no-sticky">{{order.option}}</em> - {{order.time | ordertime}}</md-subheader>
+                      <md-card-content>
+                        <md-list>
+                            <md-list-item ng-repeat="item in order.items" ng-if="$index > 0">
+                                <p>{{item.quantity}} {{item.size}} {{item.name}}</p>
+                                <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+                            </md-list-item>
+
+                            <md-list-item ng-if="order.option == 'Delivery'">
+                                <p><em>Name</em> : {{order.client_name}}</p>
+                                <p><em>Address</em> : {{order.delivery_address}}</p>
+                                <p><em>Phone number</em> : {{order.phone_number}}</p>
+                            </md-list-item>
+                        <md-list>
+                      </md-card-content>
+                      <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="home.showConfirm($event,order.$id)">Done</md-button>
+                      </md-card-actions>
+                    </md-card>
+                </div>
+
+                <!-- DELIVERY     -->
+                <div flex>
+                    <md-toolbar md-scroll-shrink>
+                        <div class="md-toolbar-tools">Delivery</div>
+                    </md-toolbar>
+                    <md-card ng-repeat="order in home.orders" ng-if="order.option == 'Delivery'">
+                      <md-subheader class="md-no-sticky">{{order.option}}</em> - {{order.time | ordertime}}</md-subheader>
+                      <md-card-content>
+                        <md-list>
+                            <md-list-item ng-repeat="item in order.items" ng-if="$index > 0">
+                                <p>{{item.quantity}} {{item.size}} {{item.name}}</p>
+                                <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+                            </md-list-item>
+                            <md-divider style="margin: 30px;"></md-divider>
+                            <md-list-item>
+                                <p>{{order.client_name}}</p>
+                            </md-list-item>
+                            <md-list-item>
+                                <p>{{order.delivery_address}}</p>
+                            </md-list-item>
+                            <md-list-item>
+                                <p>{{order.phone_number}}</p>
+                            </md-list-item>
+                        <md-list>
+                      </md-card-content>
+                      <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="home.showConfirm($event,order.$id)">Done</md-button>
+                      </md-card-actions>
+                    </md-card>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+<!--        <div ng-repeat="order in home.orders">
+
+                <p><em>{{order.option}}</em> - {{order.time | ordertime}}</p>
+
+
+                <div ng-repeat="item in order.items">
+                    <h6>{{item.quantity}} {{item.size}} {{item.name}}</h6>
+                </div>
+
+
+                <div ng-if="order.option == 'Delivery'">
+                    <p><em>Name</em> : {{order.client_name}}</p>
+                    <p><em>Address</em> : {{order.delivery_address}}</p>
+                    <p><em>Phone number</em> : {{order.phone_number}}</p>
+                </div>
+
+                <button ng-click="home.deleteItem(order.$id)">Done</button>
+            </div> -->
+        </md-content>
+</div>
